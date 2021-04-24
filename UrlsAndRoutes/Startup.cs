@@ -34,7 +34,7 @@ namespace UrlsAndRoutes
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllerRoute(name: "Default", pattern: "{controller}/{action}");
             });
         }
     }
