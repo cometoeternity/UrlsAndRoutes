@@ -33,7 +33,7 @@ namespace UrlsAndRoutes
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(name: "NewRoute", pattern: "{controller=Home}/{action=Index}/{id=DefaultId}");
+                endpoints.MapControllerRoute(name: "NewRoute", pattern: "{controller=Home}/{action=Index}/{id?}");
             });  
         }
     }
