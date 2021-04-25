@@ -34,12 +34,8 @@ namespace UrlsAndRoutes
 
             app.UseEndpoints(endpoints =>
             {
-                // Примененное к маршруту ограничение обеспечивает его соответствие только таким URL, в которых сегмент controller начинается с буквы H
-                endpoints.MapControllerRoute(name: "NewRoute", pattern: "{controller:regex(^H.*)=Home}/{action=Index}/{id?}");
-                // Ограничение соответствует только таким URL, в которых значение переменной controller начинается на букву H, а значением action
-                // являются Index или About.
-                endpoints.MapControllerRoute(name: "MeNewRoute2", pattern: "{controller:regex(^H.*)=Home}/"+"{action:regex(^Index$|^About$)=Index}/{id?}");
-
+                endpoints.MapControllerRoute(name: "NewRoute", pattern: "{controller=Home}/{action=Index}/{id:range(10,20)}");
+                endpoints.MapControllerRoute(name: "MyNewRoute", pattern: "{controller=Home}/{action=Index}"+"/{id:alpha:minlength(6)?}");
             });      
         }
     }
