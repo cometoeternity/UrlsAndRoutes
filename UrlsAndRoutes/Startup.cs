@@ -34,26 +34,9 @@ namespace UrlsAndRoutes
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(name: "NewRoute", pattern: "{controller}/{action}/{id?}",defaults: new { controller = "Home", action = "Index"}, 
-                    constraints: new { id = new IntRouteConstraint ()});
+                endpoints.MapControllerRoute(name: "NewRoute", pattern: "{controller:regex(^H.*)=Home}/{action=Index}/{id?}");
             });  
-            // AlphaRouteConstraint() - Соответствие алфавитным символам независимо от регистра.
-            // BoolRouteConstraint() - Соответствие значению, которое может быть преобразовано в тип bool.
-            // DateTimeRouteConstraint() - Соответствие значению, которое может быть преобразовано в тип DateTime.
-            // DecimalRouteConstraint() - Соответствие значению, которе может быть преобразовано в тип decimal.
-            // DoubleRouteConstaraint() - Соответствие значению, которое может быть преобразовано в тип double.
-            // FloatRouteConstraint() - Соответствие значению, которое может быть преобразовано в тип float.
-            // GuidRouteConstraint() - Соответствие значению глобального уникального идентификатора
-            // IntRouteConstraint() - Соответствие значению, которое может быть преобразовано в тип int.
-            // LengthRouteConstraint(len) - Соответствует строковому значению, которое содержит указаное число символов.
-            // LengthRouteConstraint(min,max) - Соответствует строковому значению, которое содержит число символов между min и max включительно.
-            // LongRouteConstraint() - Соответствует значению, которое может быть преобразовано в тип long
-            // MaxLengthRouteConstraint(len) - Соответствует строковому значению с количеством символов не более len.
-            // MaxRouteConstraint(val) - Соответствует значению int, если оно меньше val.
-            // MinLengthRouteConstraint(len) - Соответствует строковому значению, которое имеет, по крайней мере, len символов.
-            // MinRouteConstraint(val) - Соотвтетствует значению int, если оно больше val.
-            // RangeRouteConstraint(min,max) - Соответствует значению int, если оно находится между min и max включительно.
-            // RegexRouteConstraint(expr) - Соответствует регулярному выражению.
+        
         }
     }
 }
