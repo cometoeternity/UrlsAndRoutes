@@ -41,10 +41,7 @@ namespace UrlsAndRoutes
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(name: "NewRoute", pattern: "{controller}/{action/{id?}",defaults: new { controller = "Home", action = "Index"}, 
-                    constraints: new { id = new WeekDayConstraint()});
-                // Практическое применение специального ограничения встраиваемым образом.
-                endpoints.MapControllerRoute(name: "NewRoute2", pattern: "{controller=Home}/{action=Index}/{id:weekday?}");
+                endpoints.MapDefaultControllerRoute();
             });      
         }
     }
