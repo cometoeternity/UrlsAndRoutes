@@ -25,6 +25,7 @@ namespace UrlsAndRoutes.Controllers
             };
             r.Data["Id"] = id ?? "<no values>";
             r.Data["catchall"] = RouteData.Values["catchall"] ?? "<>";
+            r.Data["URL"] = Url.Action("CustomVariable", "Home", new { id = 100 });
             return View("Result", r);
         }
     }

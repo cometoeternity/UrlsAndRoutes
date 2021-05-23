@@ -16,7 +16,6 @@
             <tr><th>@key:</th><td>@Model.Data[key]</td></tr>
         }
     </table>
-    <a asp-controller="Home" asp-action="CustomVariable"> This is an outgoing URL</a>
-    <a asp-route="out"> This is an outgoing URL OUT</a>
+    <p>@Url.Action("CustomVariable","Home", new {id = 100})</p>
 </body>
 </html>
