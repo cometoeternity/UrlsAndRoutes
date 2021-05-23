@@ -23,7 +23,18 @@ namespace UrlsAndRoutes
             // —войство ConstraintMap возвращает словарь, используемый дл€ трансл€ции имен встраиваемых ограничеий в классы реализации
             // IRouteConstraint, которые предоставл€ют логику ограничений. ¬ словарь было добавлено новое отображение, поэтому на класс
             // WeekDayConstraint можно ссылатьс€ встраевым образом как на weekday
-            services.Configure<RouteOptions>(options => options.ConstraintMap.Add("weekday", typeof(WeekDayConstraint)));
+            services.Configure<RouteOptions>(options =>
+            {
+                options.ConstraintMap.Add("weekday", typeof(WeekDayConstraint));
+
+                // огда это свойство равно true, результирующие URL преобразуютс€ в нижний регистр, если контроллер, действие или
+                //значение содержит символы нижнего регистра. —тандартным значением €вл€етс€ false.
+                options.LowercaseUrls = true;
+
+                // огда это свойство равно true, к генерируемым системой маршрутизации URL добавл€етс€ завершающий символ косой черты. —тандартным
+                //значением €вл€етс€ false.
+                options.AppendTrailingSlash = true;
+            });
             services.AddMvc();
         }
 
@@ -41,7 +52,6 @@ namespace UrlsAndRoutes
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapControllerRoute(name: "New Route", pattern: "App/Do{action}", defaults: new { controller = "Home"});
                 endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(name: "out", pattern: "outbound/{controller=Home}/{Action=Index}/{id?}");
             });      
