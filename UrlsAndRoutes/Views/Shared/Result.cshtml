@@ -11,11 +11,12 @@
     <table class="table table-bordered table-striped table-sm">
         <tr><th>Контроллер:</th><td>@Model.Controller</td></tr>
         <tr><th>Метод действия:</th><td>@Model.Action</td></tr>
-        @foreach(string key in Model.Data.Keys)
-            {
-                <tr><th>@key:</th><td>@Model.Data[key]</td></tr>
-            }
+        @foreach (string key in Model.Data.Keys)
+        {
+            <tr><th>@key:</th><td>@Model.Data[key]</td></tr>
+        }
     </table>
-    <a asp-action="CustomVariable"> This is an outgoing URL</a>
+    <a asp-controller="Home" asp-action="CustomVariable"> This is an outgoing URL</a>
+    <a asp-route="out"> This is an outgoing URL OUT</a>
 </body>
 </html>
